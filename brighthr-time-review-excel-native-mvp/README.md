@@ -27,7 +27,8 @@ The MVP keeps analysis in Excel using:
 ## How to paste/import BrightHR CSV data
 - Open `Raw BrightHR Export` tab.
 - Use Excel Data import or paste CSV rows into `tblRawBrightHRExport`.
-- Keep headers aligned with table schema.
+- Keep the native BrightHR header row unchanged:
+  `First Name | Last Name | Job Title | Team(s) | Blip Type | Clock In Date | Clock In Time | Clock In Location | Clock Out Date | Clock Out Time | Clock Out Location | Total Duration | Total Excluding Breaks | Notes | Payroll Number | SI Number | Employee Address`.
 
 ## How to refresh Power Query
 - Excel Desktop: **Data > Refresh All**.

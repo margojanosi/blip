@@ -2,16 +2,23 @@
 
 ## tblRawBrightHRExport
 Columns:
-- Employee Name
-- Employee ID
-- Work Date
-- Clock In
-- Clock Out
-- Break Start
-- Break End
-- Break Minutes
-- Location
+- First Name
+- Last Name
+- Job Title
+- Team(s)
+- Blip Type
+- Clock In Date
+- Clock In Time
+- Clock In Location
+- Clock Out Date
+- Clock Out Time
+- Clock Out Location
+- Total Duration
+- Total Excluding Breaks
 - Notes
+- Payroll Number
+- SI Number
+- Employee Address
 
 ## tblExceptionRules
 Columns:

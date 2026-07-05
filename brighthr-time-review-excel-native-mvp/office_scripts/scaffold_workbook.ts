@@ -33,29 +33,29 @@ function main(workbook: ExcelScript.Workbook) {
   // Raw BrightHR Export table with fake sample data
   const rawSheet = sheets[1];
   const rawHeaders = [[
-    "Employee Name", "Employee ID", "Work Date", "Clock In", "Clock Out", "Break Start", "Break End", "Break Minutes", "Location", "Notes"
+    "First Name", "Last Name", "Job Title", "Team(s)", "Blip Type", "Clock In Date", "Clock In Time", "Clock In Location", "Clock Out Date", "Clock Out Time", "Clock Out Location", "Total Duration", "Total Excluding Breaks", "Notes", "Payroll Number", "SI Number", "Employee Address"
   ]];
-  rawSheet.getRange("A1:J1").setValues(rawHeaders);
+  rawSheet.getRange("A1:Q1").setValues(rawHeaders);
   const rawSample = [
-    ["Alex Green", "E100", "2026-06-30", "09:00", "17:30", "13:00", "13:30", 30, "HQ", "Clean record"],
-    ["Bailey Stone", "E101", "2026-06-30", "09:00", "", "13:00", "13:30", 30, "HQ", "Missing clock out"],
-    ["Casey Hall", "E102", "2026-06-30", "", "17:00", "12:00", "12:30", 30, "Remote", "Missing clock in"],
-    ["Drew Lane", "E103", "2026-06-30", "08:00", "17:00", "", "", "", "HQ", "Missing break"],
-    ["Evan Cole", "E104", "2026-06-30", "08:00", "17:00", "12:00", "12:10", 10, "Site A", "Short break"],
-    ["Flynn Reed", "E105", "2026-06-30", "08:00", "18:00", "12:00", "13:45", 105, "Site B", "Long break"],
-    ["Gray Kim", "E106", "2026-06-30", "06:00", "22:00", "12:00", "12:30", 30, "HQ", "Very long shift"],
-    ["Harper Lee", "E107", "2026-06-30", "09:00", "10:00", "", "", 0, "HQ", "Very short shift"],
-    ["Indy Ray", "E108", "2026-06-30", "09:00", "17:00", "12:00", "12:30", 30, "HQ", "Duplicate row 1"],
-    ["Indy Ray", "E108", "2026-06-30", "09:00", "17:00", "12:00", "12:30", 30, "HQ", "Duplicate row 2"],
-    ["Jules Park", "E109", "2026-06-30", "08:00", "12:00", "", "", 0, "HQ", "Overlap row 1"],
-    ["Jules Park", "E109", "2026-06-30", "11:00", "16:00", "", "", 0, "HQ", "Overlap row 2"],
-    ["Kai Moss", "E110", "2026-07-04", "09:00", "13:00", "", "", 0, "HQ", "Weekend shift"]
+    ["Alex", "Green", "Advisor", "Support", "Clocked", "2026-06-30", "09:00", "HQ", "2026-06-30", "17:30", "HQ", "08:30", "08:00", "Clean record", "E100", "SI100", "1 Demo Street"],
+    ["Bailey", "Stone", "Advisor", "Support", "Clocked", "2026-06-30", "09:00", "HQ", "", "", "", "", "", "Missing clock out", "E101", "SI101", "2 Demo Street"],
+    ["Casey", "Hall", "Advisor", "Remote", "Clocked", "2026-06-30", "", "Remote", "2026-06-30", "17:00", "Remote", "", "", "Missing clock in", "E102", "SI102", "3 Demo Street"],
+    ["Drew", "Lane", "Advisor", "Support", "Clocked", "2026-06-30", "08:00", "HQ", "2026-06-30", "17:00", "HQ", "09:00", "09:00", "Missing break", "E103", "SI103", "4 Demo Street"],
+    ["Evan", "Cole", "Advisor", "Field", "Clocked", "2026-06-30", "08:00", "Site A", "2026-06-30", "17:00", "Site A", "09:00", "08:50", "Short break", "E104", "SI104", "5 Demo Street"],
+    ["Flynn", "Reed", "Advisor", "Field", "Clocked", "2026-06-30", "08:00", "Site B", "2026-06-30", "18:00", "Site B", "10:00", "08:15", "Long break", "E105", "SI105", "6 Demo Street"],
+    ["Gray", "Kim", "Supervisor", "Support", "Clocked", "2026-06-30", "06:00", "HQ", "2026-06-30", "22:00", "HQ", "16:00", "15:30", "Very long shift", "E106", "SI106", "7 Demo Street"],
+    ["Harper", "Lee", "Advisor", "Support", "Clocked", "2026-06-30", "09:00", "HQ", "2026-06-30", "10:00", "HQ", "01:00", "01:00", "Very short shift", "E107", "SI107", "8 Demo Street"],
+    ["Indy", "Ray", "Advisor", "Support", "Clocked", "2026-06-30", "09:00", "HQ", "2026-06-30", "17:00", "HQ", "08:00", "07:30", "Duplicate row 1", "E108", "SI108", "9 Demo Street"],
+    ["Indy", "Ray", "Advisor", "Support", "Clocked", "2026-06-30", "09:00", "HQ", "2026-06-30", "17:00", "HQ", "08:00", "07:30", "Duplicate row 2", "E108", "SI108", "9 Demo Street"],
+    ["Jules", "Park", "Advisor", "Support", "Clocked", "2026-06-30", "08:00", "HQ", "2026-06-30", "12:00", "HQ", "04:00", "04:00", "Overlap row 1", "E109", "SI109", "10 Demo Street"],
+    ["Jules", "Park", "Advisor", "Support", "Clocked", "2026-06-30", "11:00", "HQ", "2026-06-30", "16:00", "HQ", "05:00", "05:00", "Overlap row 2", "E109", "SI109", "10 Demo Street"],
+    ["Kai", "Moss", "Advisor", "Support", "Clocked", "2026-07-04", "09:00", "HQ", "2026-07-04", "13:00", "HQ", "04:00", "04:00", "Weekend shift", "E110", "SI110", "11 Demo Street"]
   ];
-  rawSheet.getRange(`A2:J${rawSample.length + 1}`).setValues(rawSample);
+  rawSheet.getRange(`A2:Q${rawSample.length + 1}`).setValues(rawSample);
 
   let rawTable = workbook.getTable("tblRawBrightHRExport");
   if (!rawTable) {
-    rawTable = workbook.addTable("'Raw BrightHR Export'!A1:J" + (rawSample.length + 1), true);
+    rawTable = workbook.addTable("'Raw BrightHR Export'!A1:Q" + (rawSample.length + 1), true);
     rawTable.setName("tblRawBrightHRExport");
   }
 

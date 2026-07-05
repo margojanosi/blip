@@ -15,6 +15,7 @@ let
             {"Work Date", each try Date.From(_) otherwise null, type date},
             {"Clock In", each try Time.From(_) otherwise null, type time},
             {"Clock Out", each try Time.From(_) otherwise null, type time},
+            {"Clock Out Date", each try Date.From(_) otherwise null, type date},
             {"Break Start", each try Time.From(_) otherwise null, type time},
             {"Break End", each try Time.From(_) otherwise null, type time},
             {"Break Minutes", each try Number.From(_) otherwise null, type number},
@@ -41,11 +42,13 @@ let
                 d = [Work Date],
                 cin = [Clock In],
                 cout = [Clock Out],
+                outDate = [Clock Out Date],
                 shift = if d = null or cin = null or cout = null then null else
                     let
                         startDT = DateTime.From(d) + #duration(0, Time.Hour(cin), Time.Minute(cin), Number.From(Time.Second(cin))),
-                        endBase = DateTime.From(d) + #duration(0, Time.Hour(cout), Time.Minute(cout), Number.From(Time.Second(cout))),
-                        endDT = if cout < cin then endBase + #duration(1,0,0,0) else endBase,
+                        endBaseDate = if outDate <> null then outDate else d,
+                        endBase = DateTime.From(endBaseDate) + #duration(0, Time.Hour(cout), Time.Minute(cout), Number.From(Time.Second(cout))),
+                        endDT = if outDate = null and cout < cin then endBase + #duration(1,0,0,0) else endBase,
                         dur = endDT - startDT
                     in Duration.TotalHours(dur)
             in shift,

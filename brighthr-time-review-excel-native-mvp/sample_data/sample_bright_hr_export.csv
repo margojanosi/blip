@@ -1,0 +1,14 @@
+First Name,Last Name,Job Title,Team(s),Blip Type,Clock In Date,Clock In Time,Clock In Location,Clock Out Date,Clock Out Time,Clock Out Location,Total Duration,Total Excluding Breaks,Notes,Payroll Number,SI Number,Employee Address
+Alex,Green,Advisor,Support,Clocked,2026-06-30,09:00,HQ,2026-06-30,17:30,HQ,08:30,08:00,Clean record,E100,SI100,1 Demo Street
+Bailey,Stone,Advisor,Support,Clocked,2026-06-30,09:00,HQ,,,,,,Missing clock out,E101,SI101,2 Demo Street
+Casey,Hall,Advisor,Remote,Clocked,2026-06-30,,Remote,2026-06-30,17:00,Remote,,,Missing clock in,E102,SI102,3 Demo Street
+Drew,Lane,Advisor,Support,Clocked,2026-06-30,08:00,HQ,2026-06-30,17:00,HQ,09:00,09:00,Missing break,E103,SI103,4 Demo Street
+Evan,Cole,Advisor,Field,Clocked,2026-06-30,08:00,Site A,2026-06-30,17:00,Site A,09:00,08:50,Short break,E104,SI104,5 Demo Street
+Flynn,Reed,Advisor,Field,Clocked,2026-06-30,08:00,Site B,2026-06-30,18:00,Site B,10:00,08:15,Long break,E105,SI105,6 Demo Street
+Gray,Kim,Supervisor,Support,Clocked,2026-06-30,06:00,HQ,2026-06-30,22:00,HQ,16:00,15:30,Very long shift,E106,SI106,7 Demo Street
+Harper,Lee,Advisor,Support,Clocked,2026-06-30,09:00,HQ,2026-06-30,10:00,HQ,01:00,01:00,Very short shift,E107,SI107,8 Demo Street
+Indy,Ray,Advisor,Support,Clocked,2026-06-30,09:00,HQ,2026-06-30,17:00,HQ,08:00,07:30,Duplicate row 1,E108,SI108,9 Demo Street
+Indy,Ray,Advisor,Support,Clocked,2026-06-30,09:00,HQ,2026-06-30,17:00,HQ,08:00,07:30,Duplicate row 2,E108,SI108,9 Demo Street
+Jules,Park,Advisor,Support,Clocked,2026-06-30,08:00,HQ,2026-06-30,12:00,HQ,04:00,04:00,Overlap row 1,E109,SI109,10 Demo Street
+Jules,Park,Advisor,Support,Clocked,2026-06-30,11:00,HQ,2026-06-30,16:00,HQ,05:00,05:00,Overlap row 2,E109,SI109,10 Demo Street
+Kai,Moss,Advisor,Support,Clocked,2026-07-04,09:00,HQ,2026-07-04,13:00,HQ,04:00,04:00,Weekend shift,E110,SI110,11 Demo Street

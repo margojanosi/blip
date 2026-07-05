@@ -116,7 +116,7 @@ let
             in
                 if existingBreak <> null then existingBreak
                 else if totalMins = null or excludingBreakMins = null then null
-                // Preserve negative values intentionally so q_normalized_time_logs can flag data-quality issues.
+                // Preserve negative values intentionally so normalization warnings can surface source data-quality issues.
                 else totalMins - excludingBreakMins,
         type number
     ),

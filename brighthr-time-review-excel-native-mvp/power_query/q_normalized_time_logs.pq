@@ -46,9 +46,9 @@ let
                 shift = if d = null or cin = null or cout = null then null else
                     let
                         startDT = DateTime.From(d) + #duration(0, Time.Hour(cin), Time.Minute(cin), Number.From(Time.Second(cin))),
+                        // Explicit Clock Out Date takes precedence; overnight inference only applies when it is missing.
                         endBaseDate = if outDate <> null then outDate else d,
                         endBase = DateTime.From(endBaseDate) + #duration(0, Time.Hour(cout), Time.Minute(cout), Number.From(Time.Second(cout))),
-                        // Explicit Clock Out Date takes precedence; overnight inference only applies when it is missing.
                         endDT = if outDate = null and cout < cin then endBase + #duration(1,0,0,0) else endBase,
                         dur = endDT - startDT
                     in Duration.TotalHours(dur)

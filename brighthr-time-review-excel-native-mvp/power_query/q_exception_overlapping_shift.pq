@@ -7,9 +7,9 @@ let
 
     // Build DateTime helpers
     WithDateTimes = Table.AddColumn(
-        Table.AddColumn(Logs, "Clock In DT", each DateTime.From([Work Date]) + #duration(0, Time.Hour([Clock In]), Time.Minute([Clock In]), Number.RoundDown(Time.Second([Clock In]))), type datetime),
+        Table.AddColumn(Logs, "Clock In DT", each DateTime.From([Work Date]) + #duration(0, Time.Hour([Clock In]), Time.Minute([Clock In]), Number.From(Time.Second([Clock In]))), type datetime),
         "Clock Out DT", each
-            let base = DateTime.From([Work Date]) + #duration(0, Time.Hour([Clock Out]), Time.Minute([Clock Out]), Number.RoundDown(Time.Second([Clock Out])))
+            let base = DateTime.From([Work Date]) + #duration(0, Time.Hour([Clock Out]), Time.Minute([Clock Out]), Number.From(Time.Second([Clock Out])))
             in if [Clock Out] < [Clock In] then base + #duration(1,0,0,0) else base,
         type datetime
     ),

@@ -43,8 +43,8 @@ let
                 cout = [Clock Out],
                 shift = if d = null or cin = null or cout = null then null else
                     let
-                        startDT = DateTime.From(d) + #duration(0, Time.Hour(cin), Time.Minute(cin), Number.RoundDown(Time.Second(cin))),
-                        endBase = DateTime.From(d) + #duration(0, Time.Hour(cout), Time.Minute(cout), Number.RoundDown(Time.Second(cout))),
+                        startDT = DateTime.From(d) + #duration(0, Time.Hour(cin), Time.Minute(cin), Number.From(Time.Second(cin))),
+                        endBase = DateTime.From(d) + #duration(0, Time.Hour(cout), Time.Minute(cout), Number.From(Time.Second(cout))),
                         endDT = if cout < cin then endBase + #duration(1,0,0,0) else endBase,
                         dur = endDT - startDT
                     in Duration.TotalHours(dur)

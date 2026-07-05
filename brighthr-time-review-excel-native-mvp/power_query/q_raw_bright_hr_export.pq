@@ -44,7 +44,7 @@ let
                 else if fromColonText <> null then fromColonText
                 else fromNumberText
         in
-            if resolved = null then null else Number.Round(resolved, 6),
+            if resolved = null then null else Number.Round(resolved, 2),
 
     AddEmployeeName = Table.AddColumn(
         TrimmedColumnNames,

@@ -21,9 +21,9 @@ For each file in `power_query/`:
 ## 4) Load queries to worksheets
 Recommended loads:
 - `q_raw_bright_hr_export` -> Connection only (optional table load to Raw tab for debugging)
-- `q_normalized_time_logs` -> Table to `Normalized Time Logs`
+- `q_normalized_time_logs` -> Table to `Normalized Time Logs` (name table `tblNormalizedTimeLogs`)
 - `q_exception_report` -> Table to `Exception Report` (name table `tblExceptionReport`)
-- `q_review_log` -> Table to `Review Log`
+- `q_review_log` -> Table to `Review Log` (name table `tblReviewLog`)
 - Individual exception queries -> Connection only (or separate tabs during testing)
 
 ## 5) Test with sample CSV

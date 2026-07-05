@@ -8,6 +8,7 @@
 ## Summary tab (example formulas)
 - Total raw records: `=ROWS(tblRawBrightHRExport[Employee ID])`
 - Total clean records: `=COUNTA(FILTER(tblNormalizedTimeLogs[Source Row Number],ISNA(MATCH(tblNormalizedTimeLogs[Source Row Number],tblExceptionReport[Source Row Number],0))))`
+  - Counts normalized source rows that do not appear in exception source rows.
 - Total flagged records: `=COUNTA(UNIQUE(tblExceptionReport[Source Row Number]))`
 - Total exceptions: `=ROWS(tblExceptionReport[Employee ID])`
 - Open exceptions: `=COUNTIF(tblExceptionReport[Status],"Open")`

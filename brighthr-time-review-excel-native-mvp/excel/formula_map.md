@@ -7,7 +7,7 @@
 
 ## Summary tab (example formulas)
 - Total raw records: `=ROWS(tblRawBrightHRExport[Employee ID])`
-- Total clean records: `=MAX(0,ROWS(tblRawBrightHRExport[Employee ID])-ROWS(tblExceptionReport[Employee ID]))`
+- Total clean records: `=MAX(0,ROWS(tblRawBrightHRExport[Employee ID])-COUNTA(UNIQUE(tblExceptionReport[Source Row Number])))`
 - Total flagged records: `=COUNTA(UNIQUE(tblExceptionReport[Source Row Number]))`
 - Total exceptions: `=ROWS(tblExceptionReport[Employee ID])`
 - Open exceptions: `=COUNTIF(tblExceptionReport[Status],"Open")`

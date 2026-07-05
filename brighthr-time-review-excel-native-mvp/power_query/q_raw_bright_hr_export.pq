@@ -21,10 +21,10 @@ let
     ParseDurationMinutes = (value as any) as nullable number =>
         let
             fromDuration = try Duration.TotalMinutes(Duration.From(value)) otherwise null,
-            fromTime = if fromDuration <> null then fromDuration else try Duration.TotalMinutes(Time.From(value) - #time(0, 0, 0)) otherwise null,
-            textValue = if fromTime <> null then null else ValueAsTextOrNull(value),
+            fromTimeDuration = if fromDuration <> null then fromDuration else try Duration.TotalMinutes(Time.From(value) - #time(0, 0, 0)) otherwise null,
+            textValue = if fromTimeDuration <> null then null else ValueAsTextOrNull(value),
             fromColonText =
-                if fromTime <> null or textValue = null or not Text.Contains(textValue, ":") then
+                if fromTimeDuration <> null or textValue = null or not Text.Contains(textValue, ":") then
                     null
                 else
                     let
@@ -34,13 +34,13 @@ let
                     in
                         if hh = null or mm = null then null else (hh * 60) + mm,
             fromNumberText =
-                if fromTime <> null or fromColonText <> null or textValue = null then
+                if fromTimeDuration <> null or fromColonText <> null or textValue = null then
                     null
                 else
                     try Number.From(textValue) otherwise null,
             resolved =
                 if fromDuration <> null then fromDuration
-                else if fromTime <> null then fromTime
+                else if fromTimeDuration <> null then fromTimeDuration
                 else if fromColonText <> null then fromColonText
                 else fromNumberText
         in

@@ -55,7 +55,12 @@ let
                 firstName = ValueAsTextOrNull(GetFirstValue(_, {"First Name"})),
                 lastName = ValueAsTextOrNull(GetFirstValue(_, {"Last Name"}))
             in
-                if existing <> null then existing else Text.Combine(List.RemoveNulls({firstName, lastName}), " "),
+                if existing <> null then
+                    existing
+                else if firstName = null and lastName = null then
+                    null
+                else
+                    Text.Combine(List.RemoveNulls({firstName, lastName}), " "),
         type text
     ),
     AddEmployeeID = Table.AddColumn(
@@ -111,7 +116,7 @@ let
             in
                 if existingBreak <> null then existingBreak
                 else if totalMins = null or excludingBreakMins = null then null
-                else Number.Max(0, totalMins - excludingBreakMins),
+                else totalMins - excludingBreakMins,
         type number
     ),
     AddLocation = Table.AddColumn(
